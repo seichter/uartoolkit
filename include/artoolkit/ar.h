@@ -243,9 +243,12 @@ int arDetectMarkerLite( ARUint8 *dataPtr, int thresh,
 *             that is the relative position of real camera to the real marker
 * \return always 0. 
 */
+
+/*
 double arGetTransMat( ARMarkerInfo *marker_info,
                       double center[2], double width, double conv[3][4] );
 
+*/
 /**
 * \brief compute camera position in function of detected marker with an history function.
 *
@@ -266,6 +269,8 @@ double arGetTransMat( ARMarkerInfo *marker_info,
 *             that is the relative position of real camera to the real marker
 * \return always 0. 
 */
+
+/*
 double arGetTransMatCont( ARMarkerInfo *marker_info, double prev_conv[3][4],
                           double center[2], double width, double conv[3][4] );
 
@@ -279,6 +284,7 @@ double arGetTransMat4( double rot[3][3], double ppos2d[][2],
 double arGetTransMat5( double rot[3][3], double ppos2d[][2],
                        double ppos3d[][3], int num, double conv[3][4],
                        double *dist_factor, double cpara[3][4] );
+*/
 
 /**
 * \brief remove a pattern from memory.
@@ -538,9 +544,10 @@ int arGetContour( ARInt16 *limage, int *label_ref,
 * \param num XXXBK
 * \return XXXBK
 */
+/*
 double arModifyMatrix( double rot[3][3], double trans[3], double cpara[3][4],
                              double vertex[][3], double pos2d[][2], int num );
-
+*/
 /**
 * \brief extract euler angle from a rotation matrix.
 *
