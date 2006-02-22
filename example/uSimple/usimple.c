@@ -23,7 +23,7 @@ int main(int argc, char** argv)
 	artSetInteger(art,artDebug,0);
 
 	/* load an image */
-	bmpLoad("Data/TwoMarker.bmp",&frame);
+	bmpLoad("Data/Hiro.bmp",&frame);
 
 	/* load a pattern */
 	hiro_marker = artLoadMarker(art,"Data/patt.hiro",80.0);

@@ -11,16 +11,16 @@
 # -------------------------------------------------------------------------
 
 # C compiler 
-CC = dmc
+CC = c:\DM\bin\dmc
 
 # Standard flags for CC 
-CFLAGS = 
+CFLAGS =
 
 # Standard preprocessor flags (common for CC and CXX) 
 CPPFLAGS = 
 
 # Standard linker flags
-LDFLAGS = 
+LDFLAGS =
 
 # Set to 1 to build debug version [0,1]
 DEBUG = 0
@@ -77,20 +77,26 @@ UARTOOLKIT_OBJECTS =  \
 	uARToolkit_paramChangeSize.obj \
 	uARToolkit_arDetectMarker2.obj \
 	uARToolkit_arUtil.obj
+
 USIMPLE_CFLAGS =   -I..\include  $(CPPFLAGS) $(CFLAGS)
 USIMPLE_OBJECTS =  \
 	uSimple_usimple.obj
 
+USIMPLESDL_CFLAGS =   -I..\include  $(CPPFLAGS) $(CFLAGS)
+USIMPLESDL_OBJECTS =  \
+	uSimpleSDL_usimplesdl.obj
+
 ### Targets: ###
 
-all : uARToolkit.lib uSimple.exe uARToolkit.dll
+all : uARToolkit.lib uSimple.exe uARToolkit.dll uSimpleSDL.exe
 
-clean : 
+clean :
 	-if exist .\*.obj del .\*.obj
 	-if exist .\*.res del .\*.res
 	-if exist .\*.sym del .\*.sym
 	-if exist uARToolkit.lib del uARToolkit.lib
 	-if exist uSimple.exe del uSimple.exe
+	-if exist uSimpleSDL.exe del uSimpleSDL.exe
 	-if exist uSimple.map del uSimple.map
 
 uARToolkit.lib : $(UARTOOLKIT_OBJECTS)
@@ -101,6 +107,9 @@ uARToolkit.dll : $(UARTOOLKIT_OBJECTS)
 
 uSimple.exe : $(USIMPLE_OBJECTS) uARToolkit.lib
 	$(LINK) /NOLOGO /SILENT /NOI /DELEXECUTABLE /EXETYPE:NT $(LDFLAGS)  $(USIMPLE_OBJECTS),$@,uSimple.map, uARToolkit.lib,,
+	
+uSimpleSDL.exe : $(USIMPLESDL_OBJECTS) uARToolkit.lib
+	$(LINK) /ENTRY:_WinMain xx 16 /NOLOGO /SILENT /NOI /DELEXECUTABLE /EXETYPE:NT $(LDFLAGS)  $(USIMPLESDL_OBJECTS),$@,uSimpleSDL.map, uARToolkit.lib+SDL_DM+kernel32+user32,,
 
 uARToolkit_mAlloc.obj : .\..\src\mAlloc.c
 	$(CC) -mn -c -o$@ $(UARTOOLKIT_CFLAGS) .\..\src\mAlloc.c
@@ -210,3 +219,5 @@ uARToolkit_arUtil.obj : .\..\src\AR\arUtil.c
 uSimple_usimple.obj : .\..\example\uSimple\usimple.c
 	$(CC) -mn -c -o$@ $(USIMPLE_CFLAGS) .\..\example\uSimple\usimple.c
 
+uSimpleSDL_usimplesdl.obj : .\..\example\uSimpleSDL\usimplesdl.c
+	$(CC) -mn -c -o$@ $(USIMPLESDL_CFLAGS) .\..\example\uSimpleSDL\usimplesdl.c

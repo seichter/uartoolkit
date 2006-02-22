@@ -8,14 +8,14 @@ Root=
 
 [File1]
 Name=src\artCode.c
-Open=0
+Open=1
 Left=88
 Top=88
 Width=661
 Height=472
-TopLine=23
-CursorX=33
-CursorY=43
+TopLine=0
+CursorX=37
+CursorY=33
 Highlighter=
 BookmarkCount=0
 
@@ -437,7 +437,7 @@ BookmarkCount=0
 
 [File34]
 Name=src\artLabeling.h
-Open=0
+Open=1
 Left=22
 Top=22
 Width=837
@@ -515,20 +515,20 @@ BookmarkCount=0
 
 [File40]
 Name=include\artoolkit\ar.h
-Open=0
+Open=1
 Left=66
 Top=66
 Width=543
 Height=455
-TopLine=18
-CursorX=5
-CursorY=32
+TopLine=621
+CursorX=0
+CursorY=644
 Highlighter=
 BookmarkCount=0
 
 [File41]
 Name=include\artoolkit\globals.h
-Open=0
+Open=1
 Left=88
 Top=88
 Width=543

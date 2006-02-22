@@ -10,6 +10,39 @@
 #define DEBUG_2		0
 #define   EVEC_MAX     10
 
+
+typedef struct {
+
+	int		flag;
+	int		pattern[4][AR_PATT_SIZE_Y*AR_PATT_SIZE_X*3];
+	int		pattern_BW[4][AR_PATT_SIZE_Y*AR_PATT_SIZE_X*3];
+
+	double	pattern_pow[4];
+	double	pattern_pow_BW[4];
+
+} Pattern;
+
+
+typedef struct {
+	int			count;
+	Pattern		pattern[AR_PATT_NUM_MAX];	
+} ARToolkitPatterns;
+
+/*
+ * Initialise with -1 in count
+ */
+static ARToolkitPatterns patterns = {-1};
+
+static double evec[EVEC_MAX][AR_PATT_SIZE_Y*AR_PATT_SIZE_X*3];
+static double epat[AR_PATT_NUM_MAX][4][EVEC_MAX];
+static int    evec_dim;
+static int    evecf = 0;
+//static double evecBW[EVEC_MAX][AR_PATT_SIZE_Y*AR_PATT_SIZE_X*3];
+//static double epatBW[AR_PATT_NUM_MAX][4][EVEC_MAX];
+//static int    evec_dimBW;
+static int    evecBWf = 0;
+
+
 /*
 static int artGetPattNew(arToolkit* state,int *x_coord, int *y_coord, int *vertex,
                ARUint8 *ext_pat);
@@ -53,19 +86,10 @@ ARMarkerInfo *artGetMarkerInfo(arToolkit *state) {
 
     state->wmarker_num = j;
 
-    return( state->wmarker_info );
-} 
+    return (state->wmarker_info);
+}
 
-typedef struct {
 
-	int		flag;
-	int		pattern[4][AR_PATT_SIZE_Y*AR_PATT_SIZE_X*3];
-	int		pattern_BW[4][AR_PATT_SIZE_Y*AR_PATT_SIZE_X*3];
-
-	double	pattern_pow[4];
-	double	pattern_pow_BW[4];
-
-} Pattern;
 
 static
 int** artAllocIntArray(int rows,int columns) {
@@ -101,24 +125,8 @@ Pattern *artAllocPattern() {
 };
 
 
-typedef struct {
-	int			count;
-	Pattern		pattern[AR_PATT_NUM_MAX];	
-} ARToolkitPatterns;
 
-/*
- * Initialise with -1 in count
- */
-static ARToolkitPatterns patterns = {-1};
 
-static double evec[EVEC_MAX][AR_PATT_SIZE_Y*AR_PATT_SIZE_X*3];
-static double epat[AR_PATT_NUM_MAX][4][EVEC_MAX];
-static int    evec_dim;
-static int    evecf = 0;
-//static double evecBW[EVEC_MAX][AR_PATT_SIZE_Y*AR_PATT_SIZE_X*3];
-//static double epatBW[AR_PATT_NUM_MAX][4][EVEC_MAX];
-//static int    evec_dimBW;
-static int    evecBWf = 0;
 
 static void   get_cpara( double world[4][2], double vertex[4][2],
                          double para[3][3] );
@@ -195,7 +203,7 @@ int arLoadPattNew(arToolkit* state, const char *filename)
         }
 
         patterns.pattern[patno].pattern_pow_BW[h] = sqrt((double)m);
-        if (patterns.pattern[patno].pattern_pow_BW[h] == 0.0 ) 
+        if (patterns.pattern[patno].pattern_pow_BW[h] == 0.0 )
 			patterns.pattern[patno].pattern_pow_BW[h] = 0.0000001;
 
 	};
