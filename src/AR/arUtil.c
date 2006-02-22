@@ -14,6 +14,9 @@
 #include "artoolkit/ar.h"
 
 
+#include <time.h>
+
+
 // typedef unsigned char ARUint8;
 #ifndef NULL
 #define NULL 0

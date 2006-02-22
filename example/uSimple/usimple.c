@@ -23,7 +23,7 @@ int main(int argc, char** argv)
 	artSetInteger(art,artDebug,0);
 
 	/* load an image */
-	bmpLoad("Data/Hiro.bmp",&frame);
+	bmpLoad("Data/hiro.bmp",&frame);
 
 	/* load a pattern */
 	hiro_marker = artLoadMarker(art,"Data/patt.hiro",80.0);
@@ -35,7 +35,7 @@ int main(int argc, char** argv)
 	artLoadCameraParameter(art,"Data/camera_para.dat");
 	artParamChangeSize(art,frame.width,frame.height);
 	
-	for (i = 0; i < 5; i++) 
+	for (i = 0; i < 20; i++) 
 	{
 		/* set the current image (well, it doesn't change) */
 		artSetImage(art,frame.frame,frame.width,frame.height,ART_PIXFORMAT_RGB);

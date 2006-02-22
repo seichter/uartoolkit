@@ -6,6 +6,8 @@
 #include "artCode.h"
 #include "artMatrix.h"
 
+#include <string.h>
+
 
 arToolkit* artCreate() {
 	
@@ -29,10 +31,21 @@ arToolkit* artCreate() {
 		state->debug = 0;
 
 		state->wmarker_info = malloc(AR_SQUARE_MAX * sizeof(ARMarkerInfo));
+		
+		assert(state->wmarker_info);
+		
 		state->wmarker_info2 = malloc(AR_SQUARE_MAX * sizeof(ARMarkerInfo2));
+		
+		assert(state->wmarker_info2);
+		
 		state->prev_info = malloc(AR_SQUARE_MAX * sizeof(arPrevInfo));
+		
+		assert(state->prev_info);
 
-		state->l_image = malloc(1024 * 1024);
+		state->l_image = malloc((1024 * 1024) * sizeof(ARInt16));
+		
+		assert(state->l_image);
+		
 
 	};
 
@@ -106,7 +119,7 @@ artMarker *artLoadMarker(arToolkit* state,const char* filename, double size)
 
 	if (marker) 
 	{
-		memset(marker,0,sizeof(artMarker));
+		memset(marker, 0, sizeof(artMarker));
 
 		marker->visible = 0;
 		marker->id = arLoadPattNew(state,filename);
@@ -196,7 +209,10 @@ void artUpdateMarker(arToolkit *state, int type)
 		marker[i]->visible = (k != -1) ? 1 : 0;
 
 		if (marker[i]->visible && type) {
-
+	
+			marker[i]->pos[0] = state->wmarker_info[k].pos[0];
+			marker[i]->pos[1] = state->wmarker_info[k].pos[1];
+			
 			switch (type) 
 			{
 				case ART_OPENGL:

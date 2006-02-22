@@ -11,6 +11,8 @@ typedef struct
 
 	double width;
 	double center[2];
+	
+	double pos[2];
 
 	double transform[3][4];
 
@@ -19,3 +21,4 @@ typedef struct
 
 
 #endif
+

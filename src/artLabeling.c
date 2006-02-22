@@ -42,18 +42,18 @@ static ARInt16      l_imageR[640*500];
 /*****************************************************************************/
 
 
-static int          workL[WORK_SIZE];
+/* static int          workL[WORK_SIZE];*/
 static int          workR[WORK_SIZE];
-static int          work2L[WORK_SIZE*7];
+/* static int          work2L[WORK_SIZE*7]; */
 static int          work2R[WORK_SIZE*7];
 
-static int          wlabel_numL;
+/* static int          wlabel_numL; */
 static int          wlabel_numR;
-static int          wareaL[WORK_SIZE];
+/* static int          wareaL[WORK_SIZE]; */
 static int          wareaR[WORK_SIZE];
-static int          wclipL[WORK_SIZE*4];
+/* static int          wclipL[WORK_SIZE*4]; */
 static int          wclipR[WORK_SIZE*4];
-static double       wposL[WORK_SIZE*2];
+/* static double       wposL[WORK_SIZE*2]; */
 static double       wposR[WORK_SIZE*2];
 
 static unsigned char artBelowThresh(ARUint8 *pnt,int thresh, int format);
@@ -133,6 +133,8 @@ ARInt16 *artLabeling(arToolkit* state,
     int       *wclip;
     double    *wpos;
 
+	ARInt16   *l_image = &state->l_image[0];
+
 	unsigned short *pix_off = PixelOffsets[state->image.format].offset;
 
 	int dbl_poff;
@@ -141,7 +143,7 @@ ARInt16 *artLabeling(arToolkit* state,
 	int		  pnt2_index;   // [tp]
 #endif
 
-	ARInt16   *l_image = state->l_image;
+	
 
 	/* thresh * 3 */
 	thresh += thresh + thresh;
@@ -155,6 +157,9 @@ ARInt16 *artLabeling(arToolkit* state,
 
 
     if( arImageProcMode == AR_IMAGE_PROC_IN_HALF ) {
+    
+    	printf("Half Mode");
+    	
         lxsize = arImXsize / 2;
         lysize = arImYsize / 2;
     }
@@ -165,6 +170,7 @@ ARInt16 *artLabeling(arToolkit* state,
 
     pnt1 = &l_image[0];
     pnt2 = &l_image[(lysize-1)*lxsize];
+    
 
 #ifndef USE_OPTIMIZATIONS
 	for(i = 0; i < lxsize; i++) {
@@ -172,15 +178,20 @@ ARInt16 *artLabeling(arToolkit* state,
     }
 #else
 // 4x loop unrolling
-	for(i = 0; i < lxsize-(lxsize%4); i+=4) {
+	for(i = 0; i < lxsize-(lxsize % 4); i += 4) {
         *(pnt1++) = *(pnt2++) = 0;
         *(pnt1++) = *(pnt2++) = 0;
         *(pnt1++) = *(pnt2++) = 0;
         *(pnt1++) = *(pnt2++) = 0;
     }
 #endif
+    /*
     pnt1 = &l_image[0];
     pnt2 = &l_image[lxsize-1];
+    */
+    
+    pnt1 = l_image;
+    pnt2 = l_image + (lxsize - 1);
 
 #ifndef USE_OPTIMIZATIONS
     for(i = 0; i < lysize; i++) {

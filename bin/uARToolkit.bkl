@@ -30,5 +30,14 @@
 		<include>../include</include>
 		<sources>../example/uSimple/usimple.c</sources>
 	</exe>
+	
+	<exe id="uSimpleSDL">
+		<app-type>console</app-type>
+		<library>uARToolkit</library>
+		<sys-lib>m</sys-lib>
+		<sys-lib>SDL</sys-lib>
+		<include>../include</include>
+		<sources>../example/uSimpleSDL/usimplesdl.cpp</sources>
+	</exe>
 
 </makefile>

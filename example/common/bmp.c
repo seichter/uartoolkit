@@ -29,7 +29,7 @@ int bmpLoad(const char* filename, ARFrame* bitmap) {
 	bitmap->height = _uival;
 
 	bitmap->framesize = 3 * bitmap->width * bitmap->height;
-	bitmap->frame = malloc(bitmap->framesize);
+	bitmap->frame = (unsigned char*)malloc(bitmap->framesize);
 
 	fread((char*)&_usval,1,2,_file);
 

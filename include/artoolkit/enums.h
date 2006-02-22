@@ -4,7 +4,7 @@
 /**
  * Error codes
  */
-typedef enum {
+enum {
 	artError		= -1,	/**< return value if a function encountered a problem */
 	artOk			=  0,	/**< everything fine */
 	artThreshold,			/**< set the threshold for AR Toolkit recognition */
@@ -16,7 +16,7 @@ typedef enum {
  * the most likely target platform for
  * AR Toolkit content.
  */
-typedef enum {
+enum {
 	ART_PIXFORMAT_ARGB = 0,	/**< Alpha, Red, Green, Blue */
     ART_PIXFORMAT_ABGR,
 	ART_PIXFORMAT_RGB,
@@ -31,9 +31,10 @@ typedef enum {
  * For retrieving an actual matrix the 
  * client system needs to be known.
  */
-typedef enum 
+enum 
 {
-	ART_BASIC = 0,		/**< only basic information will be updated */
+	ART_NONE = 0,		/**< only visibility is updated */
+	ART_BASIC,			/**< only basic information will be updated */
 	ART_OPENGL,			/**< OpenGL transform matrix will be created */
 	ART_DIRECTX			/**< DirectX transform matrix will be created */
 };
