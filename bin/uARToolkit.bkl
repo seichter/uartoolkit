@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<makefile>
+	<include file="presets/simple.bkl"/>
+	
+	<set var="VERSION">1.0.0</set>
+	<option name="BUILD">
+		<values>debug release</values>
+		<default-value>debug</default-value>
+	</option>
+
+	<set var="USE_DEBUG" cond="BUILD=='debug'">1</set>
+	<set var="USE_DEBUG" cond="BUILD=='release'">0</set>
+
+	<lib id="uARToolkit" template="simple">
+		<warnings>max</warnings>
+		<include>../include</include>
+		<include>../src</include>
+		<sources>../src/mAlloc.c ../src/mAllocDup.c ../src/mAllocInv.c ../src/mAllocTrans.c ../src/mAllocUnit.c ../src/mAllocMul.c</sources>
+		<sources>../src/artMatrix.c ../src/artDetect.c ../src/artToolkit.c ../src/artLabeling.c ../src/artCode.c</sources>
+		<sources>../src/vAlloc.c ../src/vDisp.c ../src/vFree.c ../src/vHouse.c ../src/vInnerP.c ../src/vTridiag.c</sources>
+		<sources>../src/mDet.c ../src/mDisp.c ../src/mDup.c ../src/mFree.c ../src/mInv.c ../src/mMul.c ../src/mPCA.c ../src/mSelfInv.c ../src/mTrans.c ../src/mUnit.c</sources>
+		<sources>../src/paramGet.c ../src/paramFile.c ../src/paramDistortion.c ../src/paramDisp.c ../src/paramDecomp.c ../src/paramChangeSize.c</sources>
+		<sources>../src/AR/arDetectMarker2.c ../src/AR/arUtil.c</sources>
+	</lib>
+
+	<exe id="uSimple">
+		<app-type>console</app-type>
+		<library>uARToolkit</library>
+		<sys-lib>m</sys-lib>
+		<include>../include</include>
+		<sources>../example/uSimple/usimple.c</sources>
+	</exe>
+
+</makefile>
