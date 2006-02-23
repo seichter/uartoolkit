@@ -134,8 +134,9 @@ to the original AR Toolkit. Most developers do not use stereo,
 drawing code and video capture facilities within the 
 original AR Toolkit.
 
-\li remove all static variables of the original AR Toolkit
-\li make all parameters and vision code configurable at runtime
+\li all (or critical) code reentrant
+\li remove all static storage
+\li vision code configurable at runtime
 
 \section drawback Drawbacks
 
@@ -146,7 +147,6 @@ of the drawbacks to fully understand what uARToolkit targets:
 \li there is no drawing code, however this version can generate matrices for OpenGL and DirectX
 \li you are dealing with a 5% performance hit due to the configurability of uARToolkit on a frame to frame basis
 \li no explicit stereo mode is provided. You need to use two arToolkit handles instead
-
 
 
 \section authors Authors

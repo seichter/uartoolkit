@@ -31,7 +31,7 @@ typedef struct {
 /*
  * Initialise with -1 in count
  */
-static ARToolkitPatterns patterns = {count:-1};
+static ARToolkitPatterns patterns = {-1};
 
 static double evec[EVEC_MAX][AR_PATT_SIZE_Y*AR_PATT_SIZE_X*3];
 static double epat[AR_PATT_NUM_MAX][4][EVEC_MAX];

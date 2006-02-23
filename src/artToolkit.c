@@ -8,6 +8,8 @@
 
 #include <string.h>
 
+#define ART_WORKSIZE   1024*32
+
 
 arToolkit* artCreate() {
 	
@@ -45,7 +47,19 @@ arToolkit* artCreate() {
 		state->l_image = malloc((1024 * 1024) * sizeof(ARInt16));
 		
 		assert(state->l_image);
+
+		state->work = malloc(sizeof(int) * ART_WORKSIZE);
+
+		assert(state->work);
+
+		state->work_2 = malloc(sizeof(int) * ART_WORKSIZE * 7);
+	
+		state->w_area = malloc(sizeof(int) * ART_WORKSIZE);
+
+		state->w_clip = malloc(sizeof(int) * ART_WORKSIZE * 4);	
 		
+
+		state->w_pos = malloc(sizeof(double) * ART_WORKSIZE * 2);
 
 	};
 

@@ -134,6 +134,15 @@ typedef struct {
 
 	unsigned short	pix_offset[3];
 
+	int w_labelnum;
+
+	int	*work;
+	int *work_2;
+	int *w_area;
+	int *w_clip;
+	double *w_pos;
+
+
 	artMarker		**markers;
 	unsigned int	markercount;
 

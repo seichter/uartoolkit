@@ -22,63 +22,14 @@
 #  define put_zero(p,s) memset((void *)p, 0, s)
 #endif
 
+/** \todo 
 #define USE_OPTIMIZATIONS 1
+
+/** \todo remove this */
 #define WORK_SIZE   1024*32
 
-/*****************************************************************************/
-// BUG in ARToolkit 2.65
-// Hardcoded buffer (600*500) is too small for full-size DV-PAL/NTSC resolutions of
-// 720x576 and 720x480, respectively. Results in segment faults.
-/*
-static ARInt16      l_imageL[640*500];
-static ARInt16      l_imageR[640*500];
-*/
-
-#define HARDCODED_BUFFER_WIDTH  1024
-#define HARDCODED_BUFFER_HEIGHT 1024
-
-// static ARInt16      l_imageL[HARDCODED_BUFFER_WIDTH*HARDCODED_BUFFER_HEIGHT];
-// static ARInt16      l_imageR[HARDCODED_BUFFER_WIDTH*HARDCODED_BUFFER_HEIGHT];
-/*****************************************************************************/
-
-
-/* static int          workL[WORK_SIZE];*/
-static int          workR[WORK_SIZE];
-/* static int          work2L[WORK_SIZE*7]; */
-static int          work2R[WORK_SIZE*7];
-
-/* static int          wlabel_numL; */
-static int          wlabel_numR;
-/* static int          wareaL[WORK_SIZE]; */
-static int          wareaR[WORK_SIZE];
-/* static int          wclipL[WORK_SIZE*4]; */
-static int          wclipR[WORK_SIZE*4];
-/* static double       wposL[WORK_SIZE*2]; */
-static double       wposR[WORK_SIZE*2];
-
-static unsigned char artBelowThresh(ARUint8 *pnt,int thresh, int format);
-
-unsigned char 
-artBelowThresh(ARUint8 *pnt,int thresh, int format) {
-	switch(format) {
-		case ART_PIXFORMAT_ARGB :
-		case ART_PIXFORMAT_ABGR :
-			return (*(pnt+1) + *(pnt+2) + *(pnt+3) <= thresh);
-		case ART_PIXFORMAT_RGB :
-		case ART_PIXFORMAT_BGR :
-		case ART_PIXFORMAT_BGRA :
-		case ART_PIXFORMAT_RGBA :
-			return (*pnt + *(pnt+1) + *(pnt+2) <= thresh);
-		case ART_PIXFORMAT_2vuy :
-			return ( *(pnt+1) * 3 <= thresh );
-		case ART_PIXFORMAT_yuvs :
-			return ( *(pnt+0) * 3 <= thresh );
-		default:
-			printf("Unkown Image format %d",format);
-			break;
-	};			
-	return 0;
-};
+// #define HARDCODED_BUFFER_WIDTH  1024
+// #define HARDCODED_BUFFER_HEIGHT 1024
 
 typedef struct PixelOffset {
 	unsigned short offset[3];
@@ -148,12 +99,12 @@ ARInt16 *artLabeling(arToolkit* state,
 	/* thresh * 3 */
 	thresh += thresh + thresh;
 
-    work    = &workR[0];
-    work2   = &work2R[0];
-    wlabel_num = &wlabel_numR;
-    warea   = &wareaR[0];
-    wclip   = &wclipR[0];
-    wpos    = &wposR[0];
+	work = state->work;
+	work2 = state->work_2;
+	wlabel_num = &state->w_labelnum;
+	warea = state->w_area;
+	wclip = state->w_clip;
+	wpos = state->w_pos;
 
 
     if( arImageProcMode == AR_IMAGE_PROC_IN_HALF ) {

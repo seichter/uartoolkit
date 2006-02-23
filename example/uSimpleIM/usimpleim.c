@@ -95,7 +95,7 @@ int main(int argc, char* argv[])
 	art = artCreate();
 
 	/* set debugging */
-	artSetInteger(art, artDebug, 0);
+	artSetInteger(art, artDebug, 1);
 
 	/* load a pattern onto a marker */
 	hiro_marker = artLoadMarker(art,"Data/patt.hiro",80.0);
@@ -133,7 +133,7 @@ int main(int argc, char* argv[])
 			artDetect(art);
 
 			/* generate info for the markers */
-			artUpdateMarker(art,ART_BASIC);
+			artUpdateMarker(art,ART_NONE);
 
 			/* now the time has come to see what happened */
 			if (hiro_marker->visible)

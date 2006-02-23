@@ -8,6 +8,8 @@
 
 #define P_MAX 500
 
+
+/* \todo: most UTTER CRAP! */
 static double  pos2d[P_MAX][2];
 static double  pos3d[P_MAX][3];
 

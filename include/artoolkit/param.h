@@ -171,6 +171,7 @@ int    arParamDisp( ARParam *param );
 
 /*-------------------*/
 
+/*
 int    arsParamChangeSize( ARSParam *source, int xsize, int ysize, ARSParam *newparam );
 
 int    arsParamSave( char *filename, ARSParam *sparam );
@@ -181,7 +182,7 @@ int    arsParamDisp( ARSParam *sparam );
 
 int    arsParamGetMat( double matL[3][4], double matR[3][4],
                        double cparaL[3][4], double cparaR[3][4], double matL2R[3][4] );
-
+*/
 #ifdef __cplusplus
 }
 #endif

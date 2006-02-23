@@ -8,10 +8,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "uSimple", "uSimple\uSimple.
 		{E4AAAFC8-85FA-4645-BDBF-F6B6A227E3B3} = {E4AAAFC8-85FA-4645-BDBF-F6B6A227E3B3}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "uSimpleVideo", "uSimpleVideo\uSimpleVideo.vcproj", "{2C4517FA-ED22-4AE1-A166-287954DEEC8C}"
-	ProjectSection(ProjectDependencies) = postProject
-	EndProjectSection
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "uSimpleIM", "uSimpleIM\uSimpleIM.vcproj", "{960B8824-60AA-47A5-8D47-0DDD872F58FD}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
@@ -40,14 +36,6 @@ Global
 		{4059B34F-2360-4A8C-AC89-5F4E00D8D294}.Release.Build.0 = Release|Win32
 		{4059B34F-2360-4A8C-AC89-5F4E00D8D294}.ReleaseDLL.ActiveCfg = Release|Win32
 		{4059B34F-2360-4A8C-AC89-5F4E00D8D294}.ReleaseDLL.Build.0 = Release|Win32
-		{2C4517FA-ED22-4AE1-A166-287954DEEC8C}.Debug.ActiveCfg = Debug|Win32
-		{2C4517FA-ED22-4AE1-A166-287954DEEC8C}.Debug.Build.0 = Debug|Win32
-		{2C4517FA-ED22-4AE1-A166-287954DEEC8C}.DebugDLL.ActiveCfg = Debug|Win32
-		{2C4517FA-ED22-4AE1-A166-287954DEEC8C}.DebugDLL.Build.0 = Debug|Win32
-		{2C4517FA-ED22-4AE1-A166-287954DEEC8C}.Release.ActiveCfg = Release|Win32
-		{2C4517FA-ED22-4AE1-A166-287954DEEC8C}.Release.Build.0 = Release|Win32
-		{2C4517FA-ED22-4AE1-A166-287954DEEC8C}.ReleaseDLL.ActiveCfg = Release|Win32
-		{2C4517FA-ED22-4AE1-A166-287954DEEC8C}.ReleaseDLL.Build.0 = Release|Win32
 		{960B8824-60AA-47A5-8D47-0DDD872F58FD}.Debug.ActiveCfg = Debug|Win32
 		{960B8824-60AA-47A5-8D47-0DDD872F58FD}.Debug.Build.0 = Debug|Win32
 		{960B8824-60AA-47A5-8D47-0DDD872F58FD}.DebugDLL.ActiveCfg = Debug|Win32
