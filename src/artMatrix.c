@@ -9,9 +9,12 @@
 #define P_MAX 500
 
 
-/* \todo: most UTTER CRAP! */
+/* \todo: not reentrant safe
+
 static double  pos2d[P_MAX][2];
 static double  pos3d[P_MAX][3];
+
+*/
 
 #define MD_PI         3.14159265358979323846 
 
@@ -454,6 +457,10 @@ double arGetTransMat3( double rot[3][3], double ppos2d[][2],
     double  ret;
     int     i;
 
+	/* HSE25 moved from static */
+	double pos3d[P_MAX][3];
+
+
     pmax[0]=pmax[1]=pmax[2] = -10000000000.0;
     pmin[0]=pmin[1]=pmin[2] =  10000000000.0;
     for( i = 0; i < num; i++ ) {
@@ -733,6 +740,9 @@ static double arGetTransMatSub( double rot[3][3], double ppos2d[][2],
     double  wx, wy, wz;
     double  ret;
     int     i, j;
+
+	/* HSE25 from static */
+	double  pos2d[P_MAX][2];
 
     mat_a = arMatrixAlloc( num*2, 3 );
     mat_b = arMatrixAlloc( 3, num*2 );

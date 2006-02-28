@@ -390,10 +390,10 @@ printf("%3d(%f), %3d(%f)\n", xdiv2, sqrt(lx1), ydiv2, sqrt(ly1));
                 xc = ((xc+1)/2)*2;
                 yc = ((yc+1)/2)*2;
             }
-            if( xc >= 0 && xc < arImXsize && yc >= 0 && yc < arImYsize ) {
+            if( xc >= 0 && xc < state->image.width && yc >= 0 && yc < state->image.height ) {
 				ext_pat2_y_index = j/ydiv;
 				ext_pat2_x_index = i/xdiv;
-				image_index = (yc*arImXsize+xc) * state->image.pix_size;
+				image_index = (yc * state->image.width + xc) * state->image.pix_size;
 
 				switch(state->image.format) {
 					case ART_PIXFORMAT_ARGB:

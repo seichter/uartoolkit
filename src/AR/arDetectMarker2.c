@@ -30,12 +30,24 @@ int arDetectMarker2New( arToolkit *state, int label_num, int *label_ref,
     if( arImageProcMode == AR_IMAGE_PROC_IN_HALF ) {
         area_min /= 4;
         area_max /= 4;
-        xsize = arImXsize / 2;
+
+		xsize = state->image.width / 2;
+        ysize = state->image.height / 2;
+
+        /*
+		xsize = arImXsize / 2;
         ysize = arImYsize / 2;
+		*/
     }
-    else {
+    else 
+	{
+		xsize = state->image.width;
+        ysize = state->image.height;
+
+		/*
         xsize = arImXsize;
         ysize = arImYsize;
+		*/
     }
 	marker_num2 = 0;
 
@@ -44,7 +56,7 @@ int arDetectMarker2New( arToolkit *state, int label_num, int *label_ref,
         if( wclip[i*4+0] == 1 || wclip[i*4+1] == xsize-2 ) continue;
         if( wclip[i*4+2] == 1 || wclip[i*4+3] == ysize-2 ) continue;
 
-		ret = arGetContour( state->l_image, label_ref, i+1,
+		ret = artGetContour( state, label_ref, i+1,
 			&(wclip[i*4]), &(state->wmarker_info2[marker_num2]));
         if( ret < 0 ) continue;
 
@@ -107,7 +119,7 @@ int arDetectMarker2New( arToolkit *state, int label_num, int *label_ref,
 
 
 
-int arGetContour( ARInt16 *limage, int *label_ref,
+int artGetContour( arToolkit *state, int *label_ref,
                   int label, int clip[4], ARMarkerInfo2 *marker_info2 )
 {
     static int      xdir[8] = { 0, 1, 1, 1, 0,-1,-1,-1};
@@ -119,16 +131,24 @@ int arGetContour( ARInt16 *limage, int *label_ref,
     int             sx, sy, dir;
     int             dmax, d, v1;
     int             i, j;
+	ARInt16			*limage = state->l_image;
 
-    if( arImageProcMode == AR_IMAGE_PROC_IN_HALF ) {
-        xsize = arImXsize / 2;
+    if( arImageProcMode == AR_IMAGE_PROC_IN_HALF ) 
+	{
+        /*
+		xsize = arImXsize / 2;
         ysize = arImYsize / 2;
+		*/
+		xsize = state->image.width / 2;
+        ysize = state->image.height / 2;
     }
-    else {
-        xsize = arImXsize;
-        ysize = arImYsize;
-    }
-    j = clip[2];
+    else 
+	{
+		xsize = state->image.width;
+        ysize = state->image.height;    
+	}
+    
+	j = clip[2];
     p1 = &(limage[j*xsize+clip[0]]);
     for( i = clip[0]; i <= clip[1]; i++, p1++ ) {
         if( *p1 > 0 && label_ref[(*p1)-1] == label ) {

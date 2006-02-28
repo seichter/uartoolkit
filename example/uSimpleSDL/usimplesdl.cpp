@@ -51,6 +51,8 @@ void sdlInit() {
 	if (!image || !cursor) {
 	
 		fprintf(stderr, "Unable to load file\n");
+
+		exit(1);
 	}
 	
 	// Attempt to create a window with 32bit pixels of same size of the image.
@@ -64,7 +66,7 @@ void sdlInit() {
 	}
 
 	
-	SDL_SetColorKey(cursor, SDL_SRCCOLORKEY, SDL_MapRGB(cursor->format,0,0,255));
+	SDL_SetColorKey(cursor, SDL_SRCCOLORKEY, SDL_MapRGB(cursor->format,255,255,255));
 
 }
 
@@ -146,7 +148,7 @@ int main(int argc, char *argv[])
 			case SDL_KEYUP:
 				// If escape is pressed, return (and thus, quit)
 				if (event.key.keysym.sym == SDLK_ESCAPE)
-				return 0;
+					return 0;
 				break;
 			case SDL_QUIT:
 				return(0);

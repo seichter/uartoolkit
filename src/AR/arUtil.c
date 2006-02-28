@@ -22,10 +22,13 @@
 #define NULL 0
 #endif
 
+/*
 int        arDebug                 = 0;
 ARUint8*   arImage                 = NULL;
+*/
 int        arFittingMode           = DEFAULT_FITTING_MODE;
 int        arImageProcMode         = DEFAULT_IMAGE_PROC_MODE;
+/*
 ARParam    arParam;
 int        arImXsize, arImYsize;
 int        arTemplateMatchingMode  = DEFAULT_TEMPLATE_MATCHING_MODE;
@@ -35,10 +38,13 @@ ARUint8*   arImageL                = NULL;
 ARUint8*   arImageR                = NULL;
 ARSParam   arsParam;
 double     arsMatR2L[3][4];
+*/
+
 
 static int arGetLine2(int x_coord[], int y_coord[], int coord_num,
                       int vertex[], double line[4][3], double v[4][2], double *dist_factor);
 
+/*
 int arInitCparam( ARParam *param )
 {
     arImXsize = param->xsize;
@@ -58,13 +64,13 @@ int arsInitCparam( ARSParam *sparam )
 
     return(0);
 }
-
+*/
 int arGetLine(int x_coord[], int y_coord[], int coord_num,
               int vertex[], double line[4][3], double v[4][2])
 {
     return arGetLine2( x_coord, y_coord, coord_num, vertex, line, v, arParam.dist_factor );
 }
-
+/*
 int arsGetLine(int x_coord[], int y_coord[], int coord_num,
                int vertex[], double line[4][3], double v[4][2], int LorR)
 {   
@@ -73,6 +79,7 @@ int arsGetLine(int x_coord[], int y_coord[], int coord_num,
     else
         return arGetLine2( x_coord, y_coord, coord_num, vertex, line, v, arsParam.dist_factorR );
 }
+*/
 
 static int arGetLine2(int x_coord[], int y_coord[], int coord_num,
                       int vertex[], double line[4][3], double v[4][2], double *dist_factor)

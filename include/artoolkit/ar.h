@@ -127,7 +127,10 @@ extern ARParam  arParam;
 *
 * internal image size in heigth (generally initialize in arInitCparam)
 */
+
+/*
 extern int      arImXsize, arImYsize;
+*/
 
 /** \var int arTemplateMatchingMode
 * \brief XXXBK
@@ -529,7 +532,7 @@ int arGetLine(int x_coord[], int y_coord[], int coord_num,
 * \param marker_info2 XXXBK
 * \return  XXXBK
 */
-int arGetContour( ARInt16 *limage, int *label_ref,
+int artGetContour( arToolkit *state, int *label_ref,
                   int label, int clip[4], ARMarkerInfo2 *marker_info2 );
 
 /**
@@ -604,7 +607,7 @@ int arGetInitRot( ARMarkerInfo *marker_info, double cpara[3][4], double rot[3][3
 
 
 /*------------------------------------*/
-
+/*
 extern ARUint8  *arImageL;
 extern ARUint8  *arImageR;
 extern ARSParam arsParam;
@@ -642,7 +645,7 @@ int           arsCheckMarkerPosition( ARMarkerInfo *marker_infoL, ARMarkerInfo *
 double arsModifyMatrix( double rot[3][3], double trans[3], ARSParam *arsParam,
                         double pos3dL[][3], double pos2dL[][2], int numL,
                         double pos3dR[][3], double pos2dR[][2], int numR );
-
+*/
 #ifdef __cplusplus
 }
 #endif

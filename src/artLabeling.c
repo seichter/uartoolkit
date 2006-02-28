@@ -111,12 +111,12 @@ ARInt16 *artLabeling(arToolkit* state,
     
     	printf("Half Mode");
     	
-        lxsize = arImXsize / 2;
-        lysize = arImYsize / 2;
+		lxsize = state->image.width / 2;
+        lysize = state->image.height / 2;
     }
     else {
-        lxsize = arImXsize;
-        lysize = arImYsize;
+        lxsize = state->image.width;
+        lysize = state->image.height;
     }
 
     pnt1 = &l_image[0];
@@ -174,11 +174,13 @@ ARInt16 *artLabeling(arToolkit* state,
     wk_max = 0;
     pnt2 = &(l_image[lxsize+1]);
     if( arImageProcMode == AR_IMAGE_PROC_IN_HALF ) {
-		pnt = &(image[(arImXsize*2+2) * state->image.pix_size]);
+		
+		pnt = &(image[(state->image.width*2+2) * state->image.pix_size]);
         poff = state->image.pix_size * 2;
+
     }
     else {
-        pnt = &(image[(arImXsize+1) * state->image.pix_size]);
+        pnt = &(image[(state->image.width+1) * state->image.pix_size]);
         poff = state->image.pix_size;
     }
 
@@ -364,7 +366,7 @@ ARInt16 *artLabeling(arToolkit* state,
                 *pnt2 = 0;
             }
         }
-        if( arImageProcMode == AR_IMAGE_PROC_IN_HALF ) pnt += arImXsize * state->image.pix_size;
+        if( arImageProcMode == AR_IMAGE_PROC_IN_HALF ) pnt += state->image.width * state->image.pix_size;
     }
 
     j = 1;
