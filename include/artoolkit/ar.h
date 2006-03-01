@@ -518,8 +518,9 @@ int arGetPatt( ARUint8 *image, int *x_coord, int *y_coord, int *vertex,
 * \param v XXXBK
 * \return  XXXBK
 */
-int arGetLine(int x_coord[], int y_coord[], int coord_num,
-              int vertex[], double line[4][3], double v[4][2]);
+int artGetLine(int x_coord[], int y_coord[], int coord_num,
+              int vertex[], double line[4][3], double v[4][2],
+			  double *dist_factor);
 
 /**
 * \brief  XXXBK

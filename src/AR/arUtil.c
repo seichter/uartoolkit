@@ -40,9 +40,10 @@ ARSParam   arsParam;
 double     arsMatR2L[3][4];
 */
 
-
-static int arGetLine2(int x_coord[], int y_coord[], int coord_num,
+/*
+static int artGetLine(int x_coord[], int y_coord[], int coord_num,
                       int vertex[], double line[4][3], double v[4][2], double *dist_factor);
+*/
 
 /*
 int arInitCparam( ARParam *param )
@@ -65,11 +66,13 @@ int arsInitCparam( ARSParam *sparam )
     return(0);
 }
 */
+/*
 int arGetLine(int x_coord[], int y_coord[], int coord_num,
               int vertex[], double line[4][3], double v[4][2])
 {
     return arGetLine2( x_coord, y_coord, coord_num, vertex, line, v, arParam.dist_factor );
 }
+*/
 /*
 int arsGetLine(int x_coord[], int y_coord[], int coord_num,
                int vertex[], double line[4][3], double v[4][2], int LorR)
@@ -81,8 +84,9 @@ int arsGetLine(int x_coord[], int y_coord[], int coord_num,
 }
 */
 
-static int arGetLine2(int x_coord[], int y_coord[], int coord_num,
-                      int vertex[], double line[4][3], double v[4][2], double *dist_factor)
+int artGetLine(int x_coord[], int y_coord[], int coord_num,
+			   int vertex[], double line[4][3], double v[4][2],
+			   double *dist_factor)
 {
     ARMat    *input, *evec;
     ARVec    *ev, *mean;

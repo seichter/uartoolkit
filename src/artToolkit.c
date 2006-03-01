@@ -61,6 +61,10 @@ arToolkit* artCreate() {
 
 		state->w_pos = malloc(sizeof(double) * ART_WORKSIZE * 2);
 
+		state->matching_mode = DEFAULT_MATCHING_PCA_MODE;
+
+		state->template_mode = DEFAULT_TEMPLATE_MATCHING_MODE;
+
 	};
 
     return state;
@@ -114,14 +118,48 @@ int artLoadCameraParameter(arToolkit* state,const char* filename)
 	return arParamLoad(filename, 1, &state->wparam);
 };
 
+
+
+int artParamChangeSize(arToolkit *state, int x, int y)
+{
+    double  scale;
+    int     i;
+	ARParam *p;
+
+	assert(state);
+
+	p = &state->wparam;
+
+	scale = (double) x / (double)(p->xsize);
+
+	
+    p->xsize = x;
+    p->ysize = y;
+
+
+    for( i = 0; i < 4; i++ ) 
+	{
+        p->mat[0][i] = p->mat[0][i] * scale;
+        p->mat[1][i] = p->mat[1][i] * scale;
+    }
+
+    p->dist_factor[0] = p->dist_factor[0] * scale;
+    p->dist_factor[1] = p->dist_factor[1] * scale;
+    p->dist_factor[2] = p->dist_factor[2] / (scale * scale);
+    p->dist_factor[3] = p->dist_factor[3];
+
+    return 0;
+}
+
+/*
 void artParamChangeSize(arToolkit* state, int x, int y)
 {
 	assert(state);
 
-	arParamChangeSize(&state->wparam, x, y, &state->wparam);
+	// arParamChangeSize(&state->wparam, x, y, &state->wparam);
     arInitCparam(&state->wparam);
 };
-
+*/
 
 artMarker *artLoadMarker(arToolkit* state,const char* filename, double size)
 {

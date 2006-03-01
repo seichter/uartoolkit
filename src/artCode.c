@@ -66,12 +66,13 @@ ARMarkerInfo *artGetMarkerInfo(arToolkit *state) {
         state->wmarker_info[j].pos[0] = state->wmarker_info2[i].pos[0];
         state->wmarker_info[j].pos[1] = state->wmarker_info2[i].pos[1];
 
-        if (arGetLine(state->wmarker_info2[i].x_coord, 
+        if (artGetLine(state->wmarker_info2[i].x_coord, 
                       state->wmarker_info2[i].y_coord,
                       state->wmarker_info2[i].coord_num,
                       state->wmarker_info2[i].vertex,
                       state->wmarker_info[j].line,
-					  state->wmarker_info[j].vertex) < 0) continue;
+					  state->wmarker_info[j].vertex,
+					  &state->wparam.dist_factor[0]) < 0) continue;
 
         artGetCodeNew(state,state->wmarker_info2[i].x_coord,
                       state->wmarker_info2[i].y_coord,
@@ -130,7 +131,7 @@ Pattern *artAllocPattern() {
 
 static void   get_cpara( double world[4][2], double vertex[4][2],
                          double para[3][3] );
-static int    pattern_match_new( ARUint8 *data, int *code, int *dir, double *cf );
+static int    pattern_match_new( int template_mode, int matching_mode, ARUint8 *data, int *code, int *dir, double *cf );
 static void   put_zero( ARUint8 *p, int size );
 static void   gen_evec(void);
 
@@ -276,7 +277,7 @@ int artGetCodeNew(arToolkit* state, int *x_coord, int *y_coord, int *vertex,
 	b2 = arUtilTimer();
 #endif
 
-	pattern_match_new((ARUint8 *)ext_pat, code, dir, cf);
+	pattern_match_new(state->template_mode, state->matching_mode, (ARUint8 *)ext_pat, code, dir, cf);
 
 #if DEBUG
 	b3 = arUtilTimer();
@@ -491,7 +492,7 @@ static void get_cpara( double world[4][2], double vertex[4][2],
     arMatrixFree( c );
 }
 
-static int pattern_match_new( ARUint8 *data, int *code, int *dir, double *cf )
+static int pattern_match_new(int template_mode, int matching_mode, ARUint8 *data, int *code, int *dir, double *cf )
 {
     double invec[EVEC_MAX];
     int    input[AR_PATT_SIZE_Y*AR_PATT_SIZE_X*3];
@@ -507,7 +508,7 @@ static int pattern_match_new( ARUint8 *data, int *code, int *dir, double *cf )
     }
     ave /= (AR_PATT_SIZE_Y*AR_PATT_SIZE_X*3);
 
-    if( arTemplateMatchingMode == AR_TEMPLATE_MATCHING_COLOR ) {
+    if( template_mode == AR_TEMPLATE_MATCHING_COLOR ) {
         for(i=0;i<AR_PATT_SIZE_Y*AR_PATT_SIZE_X*3;i++) {
             input[i] = (255-data[i]) - ave;
             sum += input[i]*input[i];
@@ -529,8 +530,8 @@ static int pattern_match_new( ARUint8 *data, int *code, int *dir, double *cf )
     }
 
     res = res2 = -1;
-    if( arTemplateMatchingMode == AR_TEMPLATE_MATCHING_COLOR ) {
-        if( arMatchingPCAMode == AR_MATCHING_WITH_PCA && evecf ) {
+    if( template_mode == AR_TEMPLATE_MATCHING_COLOR ) {
+        if( matching_mode == AR_MATCHING_WITH_PCA && evecf ) {
 
             for( i = 0; i < evec_dim; i++ ) {
                 invec[i] = 0.0;

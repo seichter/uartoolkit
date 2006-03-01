@@ -4,7 +4,10 @@
 #include "artoolkit/sysconfig.h"
 
 
+
 static int      ss, sms;
+
+
 
 void artSleep(int msec)
 {

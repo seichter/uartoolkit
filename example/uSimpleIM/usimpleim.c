@@ -95,7 +95,7 @@ int main(int argc, char* argv[])
 	art = artCreate();
 
 	/* set debugging */
-	artSetInteger(art, artDebug, 1);
+	artSetInteger(art, artDebug, 0);
 
 	/* load a pattern onto a marker */
 	hiro_marker = artLoadMarker(art,"Data/patt.hiro",80.0);

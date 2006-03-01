@@ -16,6 +16,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "uSimpleSDL", "uSimpleSDL\uS
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "uSimple3D", "uSimple3D\uSimple3D.vcproj", "{960B8824-60AA-47A5-8D47-0DDD872F58FD}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
@@ -40,6 +44,14 @@ Global
 		{4059B34F-2360-4A8C-AC89-5F4E00D8D294}.Release.Build.0 = Release|Win32
 		{4059B34F-2360-4A8C-AC89-5F4E00D8D294}.ReleaseDLL.ActiveCfg = Release|Win32
 		{4059B34F-2360-4A8C-AC89-5F4E00D8D294}.ReleaseDLL.Build.0 = Release|Win32
+		{960B8824-60AA-47A5-8D47-0DDD872F58FD}.Debug.ActiveCfg = Debug|Win32
+		{960B8824-60AA-47A5-8D47-0DDD872F58FD}.Debug.Build.0 = Debug|Win32
+		{960B8824-60AA-47A5-8D47-0DDD872F58FD}.DebugDLL.ActiveCfg = Debug|Win32
+		{960B8824-60AA-47A5-8D47-0DDD872F58FD}.DebugDLL.Build.0 = Debug|Win32
+		{960B8824-60AA-47A5-8D47-0DDD872F58FD}.Release.ActiveCfg = Release|Win32
+		{960B8824-60AA-47A5-8D47-0DDD872F58FD}.Release.Build.0 = Release|Win32
+		{960B8824-60AA-47A5-8D47-0DDD872F58FD}.ReleaseDLL.ActiveCfg = Release|Win32
+		{960B8824-60AA-47A5-8D47-0DDD872F58FD}.ReleaseDLL.Build.0 = Release|Win32
 		{960B8824-60AA-47A5-8D47-0DDD872F58FD}.Debug.ActiveCfg = Debug|Win32
 		{960B8824-60AA-47A5-8D47-0DDD872F58FD}.Debug.Build.0 = Debug|Win32
 		{960B8824-60AA-47A5-8D47-0DDD872F58FD}.DebugDLL.ActiveCfg = Debug|Win32

@@ -146,6 +146,9 @@ typedef struct {
 	artMarker		**markers;
 	unsigned int	markercount;
 
+	int matching_mode;
+	int template_mode;
+
         
 } arToolkit;
 
