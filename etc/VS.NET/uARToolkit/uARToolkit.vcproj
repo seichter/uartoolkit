@@ -71,14 +71,15 @@
 				DisableLanguageExtensions="FALSE"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="TRUE"
-				DebugInformationFormat="3"
+				Detect64BitPortabilityProblems="FALSE"
+				DebugInformationFormat="0"
 				CompileAs="1"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="..\..\..\lib\libartoolkit.lib"/>
+				OutputFile="..\..\..\lib\libartoolkit.lib"
+				SuppressStartupBanner="FALSE"/>
 			<Tool
 				Name="VCMIDLTool"/>
 			<Tool
