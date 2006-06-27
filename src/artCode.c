@@ -8,7 +8,7 @@
 
 #define DEBUG		0
 #define DEBUG_2		0
-#define   EVEC_MAX     10
+#define EVEC_MAX     10
 
 
 typedef struct {
@@ -25,7 +25,7 @@ typedef struct {
 
 typedef struct {
 	int			count;
-	Pattern		pattern[AR_PATT_NUM_MAX];	
+	Pattern		pattern[AR_PATT_NUM_MAX];
 } ARToolkitPatterns;
 
 /*
@@ -66,7 +66,7 @@ ARMarkerInfo *artGetMarkerInfo(arToolkit *state) {
         state->wmarker_info[j].pos[0] = state->wmarker_info2[i].pos[0];
         state->wmarker_info[j].pos[1] = state->wmarker_info2[i].pos[1];
 
-        if (artGetLine(state->wmarker_info2[i].x_coord, 
+        if (artGetLine(state->wmarker_info2[i].x_coord,
                       state->wmarker_info2[i].y_coord,
                       state->wmarker_info2[i].coord_num,
                       state->wmarker_info2[i].vertex,
@@ -120,7 +120,7 @@ double** artAllocDoubleArray(int rows,int columns) {
 	return array;
 };
 
-static 
+static
 Pattern *artAllocPattern() {
 
 };
@@ -141,7 +141,7 @@ int arLoadPattNew(arToolkit* state, const char *filename)
     int     patno;
     int     h, i, j, l, m;
     int     i1, i2, i3;
-	
+
 	if (patterns.count == -1 ) {
 
 		if (state->debug) printf("Init Patterns\n");
@@ -156,7 +156,7 @@ int arLoadPattNew(arToolkit* state, const char *filename)
     }
 
     if (i == AR_PATT_NUM_MAX) return -1;
-	
+
 	patno = i;
 
 	if ((fp = fopen(filename,"r")) == NULL) {
@@ -194,7 +194,7 @@ int arLoadPattNew(arToolkit* state, const char *filename)
 
         patterns.pattern[patno].pattern_pow[h] = sqrt((double)m);
 
-        if (patterns.pattern[patno].pattern_pow[h] == 0.0 ) 
+        if (patterns.pattern[patno].pattern_pow[h] == 0.0 )
 			patterns.pattern[patno].pattern_pow[h] = 0.0000001;
 
         m = 0;
@@ -265,12 +265,12 @@ int artGetCodeNew(arToolkit* state, int *x_coord, int *y_coord, int *vertex,
 	static double a2 = 0.0;
 	double b1, b2, b3;
 #endif
-    
+
 
 #if DEBUG
 	b1 = arUtilTimer();
 #endif
-    
+
 	artGetPattNew(state, x_coord, y_coord, vertex, ext_pat);
 
 #if DEBUG
@@ -286,10 +286,10 @@ int artGetCodeNew(arToolkit* state, int *x_coord, int *y_coord, int *vertex,
 #if DEBUG
 	a1 += (b2 - b1);
 	a2 += (b3 - b2);
-	
+
 	count++;
 
-	if( count == 60 ) 
+	if( count == 60 )
 	{
 		/* a2 only for pattern matching */
 		printf("Time %10.5f\n", a1*1000.0/60.0);
@@ -305,7 +305,7 @@ int artGetCodeNew(arToolkit* state, int *x_coord, int *y_coord, int *vertex,
 int artGetPattNew(arToolkit* state,int *x_coord, int *y_coord, int *vertex,
 				  ARUint8 ext_pat[AR_PATT_SIZE_Y][AR_PATT_SIZE_X][3]
 		  /*
-			   ARUint8 ext_pat[AR_PATT_SIZE_Y][AR_PATT_SIZE_X][3] 
+			   ARUint8 ext_pat[AR_PATT_SIZE_Y][AR_PATT_SIZE_X][3]
 			   ARUint8 *ext_pat
 			*/
 			   )
@@ -375,7 +375,7 @@ printf("%3d(%f), %3d(%f)\n", xdiv2, sqrt(lx1), ydiv2, sqrt(ly1));
 
 	xdiv2_reciprocal = 1.0 / xdiv2;
 	ydiv2_reciprocal = 1.0 / ydiv2;
-	
+
 	/* expensive! */
     put_zero( (ARUint8 *)ext_pat2, AR_PATT_SIZE_Y*AR_PATT_SIZE_X*3*sizeof(ARUint32) );
 
@@ -546,9 +546,9 @@ static int pattern_match_new(int template_mode, int matching_mode, ARUint8 *data
 
             for( l = 0; l < patterns.count; l++ ) {
 
-                
+
 				k++;
-                
+
 				while( patterns.pattern[k].flag == 0 ) k++;
 
                 if( patterns.pattern[k].flag == 2 ) continue;
@@ -570,16 +570,16 @@ static int pattern_match_new(int template_mode, int matching_mode, ARUint8 *data
 #endif
             }
             sum = 0;
-            
-			for (i=0; i < AR_PATT_SIZE_Y*AR_PATT_SIZE_X*3;i++) sum += 
+
+			for (i=0; i < AR_PATT_SIZE_Y*AR_PATT_SIZE_X*3;i++) sum +=
 				input[i] * patterns.pattern[res2].pattern[res][i];
-            
+
 			max = sum / patterns.pattern[res2].pattern_pow[res] / datapow;
         }
         else {
             k = -1;
             max = 0.0;
-			
+
 			for( l = 0; l < patterns.count; l++ ) {
                 k++;
                 while( patterns.pattern[k].flag == 0 ) k++;
@@ -681,7 +681,7 @@ static void gen_evec(void)
             evec[j][i] = wevec->m[j*AR_PATT_SIZE_Y*AR_PATT_SIZE_X*3+i];
         }
     }
-    
+
     for( i = 0; i < AR_PATT_NUM_MAX; i++ ) {
         if(patterns.pattern[i].pattern == 0) continue;
         for( j = 0; j < 4; j++ ) {
