@@ -1,3 +1,9 @@
+/**
+ * uARToolkit / Micro AR Toolkit 
+ * 
+ * 
+ *
+ */
 #ifndef artoolkit_h
 #define artoolkit_h
 
@@ -43,7 +49,7 @@ ARTOOLKIT_API void artShutdown(arToolkit *AR);
  * \param name name of the parameter to set
  * \param value value of the parameter
  */
-ARTOOLKIT_API void artSetInteger(arToolkit *AR,unsigned int name,int value);
+ARTOOLKIT_API void artSetInteger(arToolkit *AR, unsigned int name, int value);
 
 /**
  * Get internal value.
@@ -51,7 +57,7 @@ ARTOOLKIT_API void artSetInteger(arToolkit *AR,unsigned int name,int value);
  * \param name name of the parameter
  * \return value of the parameter
  */
-ARTOOLKIT_API int artGetInteger(arToolkit *AR,unsigned int name);
+ARTOOLKIT_API int artGetInteger(arToolkit *AR, unsigned int name);
 
 /**
  * Load a pattern onto a marker
@@ -67,7 +73,7 @@ ARTOOLKIT_API artMarker *artLoadMarker(arToolkit *AR,
  * \param AR handle for AR Toolkit
  * \param filename name for the file
  */
-ARTOOLKIT_API int artLoadCameraParameter(arToolkit *AR,const char *filename);
+ARTOOLKIT_API int artLoadCameraParameter(arToolkit *AR, const char *filename);
 
 /**
  * Change the camera parameter
@@ -102,7 +108,7 @@ ARTOOLKIT_API void artUpdateMarker(arToolkit *AR, int type);
 
 
 /**
- * Get a timer 
+ * Get a time stamp 
  * \return a time stamp
  */
 ARTOOLKIT_API double artTimer();

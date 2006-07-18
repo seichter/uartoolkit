@@ -11,7 +11,7 @@
 	<set var="USE_DEBUG" cond="BUILD=='debug'">1</set>
 	<set var="USE_DEBUG" cond="BUILD=='release'">0</set>
 
-	<lib id="uARToolkit" template="simple">
+	<dll id="uARToolkit" template="simple">
 		<warnings>max</warnings>
 		<include>../include</include>
 		<include>../src</include>
@@ -21,7 +21,7 @@
 		<sources>../src/mDet.c ../src/mDisp.c ../src/mDup.c ../src/mFree.c ../src/mInv.c ../src/mMul.c ../src/mPCA.c ../src/mSelfInv.c ../src/mTrans.c ../src/mUnit.c</sources>
 		<sources>../src/paramGet.c ../src/paramFile.c ../src/paramDistortion.c ../src/paramDisp.c ../src/paramDecomp.c ../src/paramChangeSize.c</sources>
 		<sources>../src/AR/arDetectMarker2.c ../src/AR/arUtil.c</sources>
-	</lib>
+	</dll>
 
 	<exe id="uSimple">
 		<app-type>console</app-type>
