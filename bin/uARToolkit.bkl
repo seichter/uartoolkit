@@ -40,4 +40,17 @@
 		<sources>../example/uSimpleSDL/usimplesdl.cpp</sources>
 	</exe>
 
+	<exe id="uSimpleVX">
+		<app-type>console</app-type>
+		<library>uARToolkit</library>
+		<sys-lib>m</sys-lib>
+		<sys-lib>vx</sys-lib>
+		<sys-lib>dl</sys-lib>
+		<lib-path>../../SandBox/VX/bin</lib-path>
+		<include>../include</include>
+		<include>../../SandBox/VX/include</include>
+		<sources>../example/uSimpleVX/usimplevx.c</sources>
+	</exe>
+
+
 </makefile>
