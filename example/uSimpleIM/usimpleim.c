@@ -133,7 +133,7 @@ int main(int argc, char* argv[])
 			artDetect(art);
 
 			/* generate info for the markers */
-			artUpdateMarker(art,ART_NONE);
+			artUpdateMarker(art,ART_BASIC);
 
 			/* now the time has come to see what happened */
 			if (hiro_marker->visible)
