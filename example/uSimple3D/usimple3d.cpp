@@ -173,7 +173,7 @@ void sdlInit() {
 
 #endif
 
-	image = SDL_CreateRGBSurface(SDL_SWSURFACE, 
+	image = SDL_CreateRGBSurface(SDL_HWSURFACE, 
 		video_image->width, video_image->height, 24, 
 		rmask, gmask, bmask, 1);
 
@@ -228,19 +228,14 @@ void sdlRender() {
 		
 		// blit the cursor onto the screen 
 		SDL_BlitSurface(cursor, 0, screen, &dest);
-		SDL_UpdateRects(screen, 1, &dest);	
+		SDL_UpdateRects(screen, 1, &dest);
 	}
-
-
-	
-	
-
 	
 	// Unlock if needed
 	if (SDL_MUSTLOCK(screen)) SDL_UnlockSurface(screen);
 
 	// Tell SDL to update the whole screen
-	SDL_UpdateRect(screen, 0, 0, 640, 480);    
+	// SDL_UpdateRect(screen, 0, 0, 640, 480);    
 }
 
 

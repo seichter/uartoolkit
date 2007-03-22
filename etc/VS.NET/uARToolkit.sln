@@ -18,6 +18,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "uSimpleSDL", "uSimpleSDL\uS
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "uSimple3D", "uSimple3D\uSimple3D.vcproj", "{960B8824-60AA-47A5-8D47-0DDD872F58FD}"
 	ProjectSection(ProjectDependencies) = postProject
+		{E4AAAFC8-85FA-4645-BDBF-F6B6A227E3B3} = {E4AAAFC8-85FA-4645-BDBF-F6B6A227E3B3}
 	EndProjectSection
 EndProject
 Global
@@ -26,6 +27,8 @@ Global
 		DebugDLL = DebugDLL
 		Release = Release
 		ReleaseDLL = ReleaseDLL
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
 	EndGlobalSection
 	GlobalSection(ProjectConfiguration) = postSolution
 		{E4AAAFC8-85FA-4645-BDBF-F6B6A227E3B3}.Debug.ActiveCfg = Debug|Win32

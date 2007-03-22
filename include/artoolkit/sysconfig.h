@@ -10,17 +10,17 @@
 #include <windows.h>
 #else
 #include <sys/time.h>
-#endif 
-
-
-#if defined(_MS_VER)
-#if defined(ARTOOLKIT_BUILD_DLL) 
-	#define ARTOOLKIT_API extern "C" __declspec(dllexport)
-#else
-	#define ARTOOLKIT_API extern "C" __declspec(dllimport)
 #endif
+
+
+#if defined(_WIN32)
+	#if defined(ARTOOLKIT_BUILD_DLL)
+		#define ARTOOLKIT_API extern "C" __declspec(dllexport)
+	#else
+		#define ARTOOLKIT_API extern "C" __declspec(dllimport)
+	#endif
 #else
-	#define ARTOOLKIT_API		extern
+	#define ARTOOLKIT_API
 #endif
 
 

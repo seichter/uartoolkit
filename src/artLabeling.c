@@ -62,8 +62,8 @@ void arGetImgFeature( int *num, int **area, int **clip, double **pos )
 */
 
 ARInt16 *artLabeling(arToolkit* state, 
-						  int *label_num, int **area, double **pos, int **clip,
-						  int **label_ref)
+	int *label_num, int **area, double **pos, int **clip,
+	int **label_ref)
 {
 
 	ARUint8 *image = state->image.frame;

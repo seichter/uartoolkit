@@ -115,21 +115,21 @@
 				DisableLanguageExtensions="FALSE"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="TRUE"
-				DebugInformationFormat="3"
+				Detect64BitPortabilityProblems="FALSE"
+				DebugInformationFormat="0"
 				CompileAs="1"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile="..\..\..\bin\libartoolkit.dll"
+				OutputFile="..\..\..\bin\uARToolkit.dll"
 				LinkIncremental="1"
 				IgnoreAllDefaultLibraries="FALSE"
 				GenerateDebugInformation="TRUE"
 				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
-				ImportLibrary="$(OutDir)/uARToolkit.lib"
+				ImportLibrary="$(TargetDir)\uARToolkit.lib"
 				TargetMachine="1"/>
 			<Tool
 				Name="VCMIDLTool"/>
