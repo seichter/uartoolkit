@@ -1,0 +1,9 @@
+SET(LIB_NAME uartoolkit)
+
+SET(LEGACY_CODE AR/arDetectMarker2.c AR/arUtil.c)
+
+FILE(GLOB HDRS *.h)
+FILE(GLOB SRCS *.c)
+
+ADD_LIBRARY(${LIB_NAME} SHARED ${HDRS} ${SRCS} ${LEGACY_CODE})
+
