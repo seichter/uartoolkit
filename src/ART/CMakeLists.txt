@@ -3,7 +3,14 @@ SET(LIB_NAME uartoolkit)
 SET(LEGACY_CODE AR/arDetectMarker2.c AR/arUtil.c)
 
 FILE(GLOB HDRS *.h)
+FILE(GLOB HDRS ${HDRS} ${CMAKE_SOURCE_DIR}/include/artoolkit/*.h)
 FILE(GLOB SRCS *.c)
+
+ADD_DEFINITIONS(-DARTOOLKIT_BUILD_LIB)
 
 ADD_LIBRARY(${LIB_NAME} SHARED ${HDRS} ${SRCS} ${LEGACY_CODE})
 
+LINK_DIRECTORIES(.)
+
+## now add the examples
+ADD_SUBDIRECTORY(example)
