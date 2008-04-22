@@ -1,16 +1,20 @@
-SET(LIB_NAME uartoolkit)
+set(LIB_NAME uartoolkit)
 
-SET(LEGACY_CODE AR/arDetectMarker2.c AR/arUtil.c)
+set(LEGACY_CODE 
+	${CMAKE_CURRENT_SOURCE_DIR}/../AR/arDetectMarker2.c 
+	${CMAKE_CURRENT_SOURCE_DIR}/../AR/arUtil.c
+	)
 
-FILE(GLOB HDRS *.h)
-FILE(GLOB HDRS ${HDRS} ${CMAKE_SOURCE_DIR}/include/artoolkit/*.h)
-FILE(GLOB SRCS *.c)
+file(GLOB HDRS *.h)
+file(GLOB HDRS ${HDRS} ${CMAKE_SOURCE_DIR}/include/artoolkit/*.h)
+file(GLOB HDRS ${HDRS} ${CMAKE_SOURCE_DIR}/include/*.h)
+file(GLOB SRCS *.c)
 
-ADD_DEFINITIONS(-DARTOOLKIT_BUILD_LIB)
+add_definitions(-DARTOOLKIT_BUILD_LIB=1)
 
-ADD_LIBRARY(${LIB_NAME} SHARED ${HDRS} ${SRCS} ${LEGACY_CODE})
+add_library(${LIB_NAME} SHARED ${HDRS} ${SRCS} ${LEGACY_CODE})
 
-LINK_DIRECTORIES(.)
+set_target_properties(${LIB_NAME} PROPERTIES ENABLE_EXPORTS 1)
 
-## now add the examples
-ADD_SUBDIRECTORY(example)
+
+

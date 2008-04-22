@@ -1,10 +1,10 @@
-ADD_EXECUTABLE(uart_simple usimple.c)
+add_executable(uart_simple usimple.c)
 
-SET(ADD_LIBS)
+set(ADD_LIBS)
 
-IF(UNIX)
-SET(ADD_LIBS m)
-ENDIF(UNIX)
+if(UNIX)
+	SET(ADD_LIBS m)
+endif(UNIX)
 
-TARGET_LINK_LIBRARIES(uart_simple uartoolkit ${ADD_LIBS})
+target_link_libraries(uart_simple uartoolkit ${ADD_LIBS})
 
