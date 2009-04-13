@@ -1,18 +1,18 @@
-#if defined(_WIN32)
+//#if defined(_WIN32)
 #include <SDL.h>
-#else
-#include <SDL/SDL.h>
-#endif
+//#else
+//#include <SDL/SDL.h>
+//#endif
 
 #include <stdlib.h>
 #include <artoolkit.h>
 
-SDL_Surface *screen;
-SDL_Surface *image;
-SDL_Surface *cursor;
+SDL_Surface *screen(0);
+SDL_Surface *image(0);
+SDL_Surface *cursor(0);
 
-artMarker   *marker;
-arToolkit	*art;
+artMarker   *marker(0);
+arToolkit	*art(0);
 
 void artInit() {
 
@@ -50,7 +50,7 @@ void sdlInit() {
 
 	if (!image || !cursor) {
 	
-		fprintf(stderr, "Unable to load file\n");
+		fprintf(stderr, "Unable to load file(s)\n");
 
 		exit(1);
 	}
