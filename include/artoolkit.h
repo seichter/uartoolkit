@@ -1,7 +1,7 @@
 /**
- * uARToolkit / Micro AR Toolkit 
- * 
- * 
+ * uARToolkit / Micro AR Toolkit
+ *
+ *
  *
  */
 #ifndef artoolkit_h
@@ -15,7 +15,7 @@ extern "C" {
 #include "artoolkit/external.h"
 #include "artoolkit/sysconfig.h"
 #include "artoolkit/enums.h"
-	
+
 /**
  * handle for AR Toolkit state
  */
@@ -25,7 +25,7 @@ typedef struct arToolkit arToolkit;
  * Initializes the internal structures of ARToolkit
  * \return 0 if unsuccessfull, otherwise a pointer to internal state
  */
-ARTOOLKIT_API arToolkit *artCreate(); 
+ARTOOLKIT_API arToolkit *artCreate();
 
 
 /**
@@ -64,11 +64,11 @@ ARTOOLKIT_API int artGetInteger(arToolkit *AR, unsigned int name);
  * \param AR AR Toolkit handle
  * \param filename filename for the pattern file
  */
-ARTOOLKIT_API artMarker *artLoadMarker(arToolkit *AR, 
+ARTOOLKIT_API artMarker *artLoadMarker(arToolkit *AR,
 								const char *filename,
 								double size);
 
-/** 
+/**
  * Load the camera parameter for the camera
  * \param AR handle for AR Toolkit
  * \param filename name for the file
@@ -84,18 +84,18 @@ ARTOOLKIT_API int artLoadCameraParameter(arToolkit *AR, const char *filename);
 ARTOOLKIT_API void artParamChangeSize(arToolkit *AR, int x, int y);
 
 /**
- * Every time a new frame is provided by the capturing device 
+ * Every time a new frame is provided by the capturing device
  * this function should be called in order to sustain the internal
  * integrity regarding the format and address of the image.
  * \param AR the current AR Toolkit handle
- * \param image a pointer to the image 
+ * \param image a pointer to the image
  * \param width width of the image provided
  * \param height height of the image provided
  * \param format the actual format of the image
  */
-ARTOOLKIT_API void artSetImage(arToolkit *AR, 
-						unsigned char* image, 
-						int width, int height, 
+ARTOOLKIT_API void artSetImage(arToolkit *AR,
+						unsigned char* image,
+						int width, int height,
 						unsigned int format);
 /**
  * This function updates the internal marker information
@@ -108,7 +108,7 @@ ARTOOLKIT_API void artUpdateMarker(arToolkit *AR, int type);
 
 
 /**
- * Get a time stamp 
+ * Get a time stamp
  * \return a time stamp
  */
 ARTOOLKIT_API double artTimer();
@@ -125,19 +125,19 @@ is able to change video formats at runtime. uARToolkit is
 distributed under the terms of the GPL.
 
 \section features Features
-	
+
 \li pure ANSI C API
 \li video format agnostic
 \li graphics library agnostic
-\li not depending on video capturing facilities 
+\li not depending on video capturing facilities
 \li not depending on graphics library
 
 \section goal Goals
 
-This derivate version was born out of necessity to 
+This derivate version was born out of necessity to
 provide a high performance and lightweight alternative
-to the original AR Toolkit. Most developers do not use stereo, 
-drawing code and video capture facilities within the 
+to the original AR Toolkit. Most developers do not use stereo,
+drawing code and video capture facilities within the
 original AR Toolkit.
 
 \li all (or critical) code reentrant
